@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+const NavBar = () => {
   return (
     <nav className="w-full flex justify-between items-center px-6 py-4 bg-white shadow-md">
       <div className="text-2xl font-bold text-blue-700">ChildCare Connect</div>
@@ -18,7 +18,12 @@ export default function Navbar() {
         <li>
           <Link to="/login" className="hover:text-blue-600">Login</Link>
         </li>
+        <li>
+          <Link to="/register" className="hover:text-blue-600">Register</Link>
+        </li>
       </ul>
     </nav>
   );
-}
+};
+
+export default NavBar;

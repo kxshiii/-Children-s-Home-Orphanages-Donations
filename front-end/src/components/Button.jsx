@@ -1,23 +1,16 @@
 import React from "react";
 
-function Button({ children, onClick, type = "button", ...props }) {
+const Button = ({ children, text, onClick, type = "button", ...props }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      style={{
-        padding: "0.5rem 1rem",
-        background: "#3182ce",
-        color: "#fff",
-        border: "none",
-        borderRadius: "4px",
-        cursor: "pointer"
-      }}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded"
       {...props}
     >
-      {children}
+      {children || text}
     </button>
   );
-}
+};
 
 export default Button;
