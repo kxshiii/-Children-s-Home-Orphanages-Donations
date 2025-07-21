@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import Inputs from "../components/Inputs";
+import Input from "../components/Input"; // FIXED: use `Input` not `Inputs`
 import Button from "../components/Button";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
@@ -35,21 +35,21 @@ const LoginPage = () => {
         {loading && <Loader />}
         {error && <p className="text-red-500">{error.message || "Login failed"}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Inputs
+          <Input
             label="Email"
             name="email"
             type="email"
             value={formData.email}
             onChange={handleChange}
           />
-          <Inputs
+          <Input
             label="Password"
             name="password"
             type="password"
             value={formData.password}
             onChange={handleChange}
           />
-          <Button type="submit" text={loading ? <Loader /> : "Login"} />
+          <Button type="submit" text="Login" disabled={loading} />
         </form>
       </div>
     </>

@@ -1,12 +1,14 @@
 import React from "react";
 
-const Button = ({ text, ...props }) => {
+const Button = ({ children, text, onClick, type = "button", ...props }) => {
   return (
     <button
-      {...props}
+      type={type}
+      onClick={onClick}
       className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded"
+      {...props}
     >
-      {text}
+      {children || text}
     </button>
   );
 };

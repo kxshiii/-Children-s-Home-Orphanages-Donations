@@ -1,7 +1,10 @@
 export default {
-  testEnvironment: "jsdom",
-  moduleNameMapper: {
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['js', 'jsx'],
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"]
+  moduleNameMapper: {
+    '\\.(css|less)$': 'identity-obj-proxy',
+  },
 };
