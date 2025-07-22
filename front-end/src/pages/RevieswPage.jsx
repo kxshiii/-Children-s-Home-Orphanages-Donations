@@ -1,6 +1,6 @@
 // src/pages/ReviewPage.jsx
 import React, { useState } from 'react';
-import Input from '../components/Input';
+import Input from './Input';
 import Button from '../components/Button';
 
 const ReviewPage = () => {
