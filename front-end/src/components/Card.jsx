@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+import React from 'react';
+
+const Card = ({ children, className = '' }) => {
+  return (
+    <div className={`bg-white p-4 rounded-2xl shadow-md ${className}`}>
+      {children}
+=======
 import React from "react";
 
 const Card = ({ title, subtitle, description, image, children, actions }) => {
@@ -11,6 +19,7 @@ const Card = ({ title, subtitle, description, image, children, actions }) => {
       {description && <p className="mt-2 text-gray-700">{description}</p>}
       {children}
       {actions && <div className="mt-3">{actions}</div>}
+>>>>>>> d6f341b9e0e34970ef97fa1fb73f878ccf34f3c0
     </div>
   );
 };
