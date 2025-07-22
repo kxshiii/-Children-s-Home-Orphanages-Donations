@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
-from  database import db
+from flask import Blueprint
 # back-end/middleware/auth.py
 # This file handles user authentication, including registration and login.
 # It uses JWT for token generation and validation.
@@ -33,8 +33,7 @@ def register():
 
     hashed_pw = generate_password_hash(password)
     user = User(username=username, password=hashed_pw)
-    db.session.add(user)
-    db.session.commit()
+  
     return jsonify({'message': 'User registered successfully'}), 201
 
 
