@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models import ChildrenHome
-from database import db
+
 
 home_bp = Blueprint('home', __name__)
 
@@ -13,8 +13,8 @@ def list_homes():
 def add_home():
     data = request.json
     home = ChildrenHome(**data)
-    db.session.add(home)
-    db.session.commit()
+    if not home.name or not home.location:
+        return jsonify({'error': 'Name and location are required'}), 400
     return jsonify(home.to_dict()), 201
 
 @home_bp.route('/homes/<int:id>', methods=['GET'])
