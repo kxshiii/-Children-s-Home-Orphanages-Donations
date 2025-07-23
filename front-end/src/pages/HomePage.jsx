@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHomes } from "../features/home/homeSlice";
+import { fetchHomes } from "../features/homes/homeSlice";
 import Loader from "../components/Loader";
 import Card from "../components/Card";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 import ReviewForm from "../components/ReviewForm";
 
 const HomePage = () => {

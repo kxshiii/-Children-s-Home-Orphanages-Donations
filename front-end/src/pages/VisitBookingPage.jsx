@@ -1,4 +1,4 @@
-// src/pages/VisitBookingPage.jsx
+
 import React, { useState } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -10,7 +10,7 @@ const VisitBookingPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Call booking API
+    
   };
 
   return (

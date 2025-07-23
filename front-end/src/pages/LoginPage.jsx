@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import Input from "../components/Input"; // FIXED: use `Input` not `Inputs`
+import Input from "../components/Input"; 
 import Button from "../components/Button";
 import Loader from "../components/Loader";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
