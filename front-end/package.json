@@ -1,7 +1,10 @@
 
 
 {
+<<<<<<< HEAD
   "$schema": "https://json.schemastore.org/package.json",
+=======
+>>>>>>> ef62e18e87098ed95eefca9a127fe7a086d78b15
   "name": "childrens-home-orphanages-donations",
   "version": "1.0.0",
   "private": true,
