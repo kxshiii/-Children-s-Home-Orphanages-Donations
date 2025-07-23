@@ -3,7 +3,7 @@ import authReducer from '../features/auth/authSlice';
 import homesReducer from '../features/homes/homesSlice';
 import reviewsReducer from '../features/reviews/reviewsSlice';
 import donationsReducer from '../features/donations/donationSlice';
-import adminReducer from '../features/admin/adminSlice';
+import adminReducer from '../featu';
 
 export const store = configureStore({
   reducer: {
