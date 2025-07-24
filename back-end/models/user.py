@@ -13,7 +13,7 @@ class User(db.Model):
     last_name = db.Column(db.String(50))
     date_joined = db.Column(db.DateTime, server_default=db.func.now())  # Automatically set to current time when user is created
  
-    # Add more fields as needed
+    
 
     def to_dict(self):
         return {'id': self.id, 'username': self.username}

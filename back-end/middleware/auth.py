@@ -2,20 +2,14 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
 from flask import Blueprint
-# back-end/middleware/auth.py
-# This file handles user authentication, including registration and login.
-# It uses JWT for token generation and validation.
-# back-end/middleware/auth.py
-# back-end/middleware/auth.py
-# back-end/middleware/auth.py
-# back-end/middleware/auth.py
+
 import jwt
 import datetime
 import os
 
 auth_bp = Blueprint('auth', __name__)
 
-# Load secret key from environment or fallback
+
 SECRET_KEY = os.getenv("JWT_SECRET_KEY", "default_secret_key")
 
 @auth_bp.route('/register', methods=['POST'])
