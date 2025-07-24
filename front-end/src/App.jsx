@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar";
 import HomeListPage from "./pages/HomeListPage";
 import HomeDetailPage from "./pages/HomeDetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import VisitBookingPage from "./pages/VisitBookingPage";
-import ReviewPage from "./pages/ReviewPage";
+import ReviewPage from "./pages/RevieswPage";
 
 const App = () => {
   return (
