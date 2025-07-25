@@ -1,10 +1,6 @@
-export default {
-  testEnvironment: 'jsdom',
-  moduleFileExtensions: ['js', 'jsx'],
-  transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-  },
-  moduleNameMapper: {
-    '\\.(css|less)$': 'identity-obj-proxy',
-  },
-};
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+});

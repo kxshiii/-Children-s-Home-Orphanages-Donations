@@ -1,14 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./features/auth/authSlice";
-import homeReducer from "./features/homes/homeSlice";
-import reviewReducer from "./features/reviews/reviewSlice";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
+import App from './App';
+import './index.css';
 
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    homes: homeReducer,
-    reviews: reviewReducer,
-  },
-});
-
-export default store;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);

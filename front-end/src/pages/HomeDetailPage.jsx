@@ -5,7 +5,7 @@ import ReviewForm from "../components/ReviewForm";
 import { fetchReviews } from "../features/reviews/reviewSlice";
 
 const HomeDetailPage = () => {
-  const { id } = useParams(); // get home ID from URL
+  const { id } = useParams(); 
   const dispatch = useDispatch();
 
   const homes = useSelector((state) => state.homes.list);

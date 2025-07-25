@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import Inputs from "../components/Inputs";
+import Inputs from "../components/Input";
 import Button from "../components/Button";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
@@ -29,8 +29,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      <NavBar />
+
       <div className="p-4 max-w-md mx-auto mt-10 bg-white shadow-xl rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Register</h2>
         {loading && <Loader />}
@@ -60,7 +59,6 @@ const RegisterPage = () => {
           <Button type="submit" text="Register" />
         </form>
       </div>
-    </>
   );
 };
 

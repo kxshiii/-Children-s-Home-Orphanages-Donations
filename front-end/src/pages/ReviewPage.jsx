@@ -1,6 +1,6 @@
-// src/pages/ReviewPage.jsx
+
 import React, { useState } from 'react';
-import Input from './Input';
+import Input from '../components/Input';
 import Button from '../components/Button';
 
 const ReviewPage = () => {
@@ -10,7 +10,7 @@ const ReviewPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Submit review to backend
+    
   };
 
   return (
