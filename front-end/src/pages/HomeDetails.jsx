@@ -13,7 +13,7 @@ import { toast } from '@/components/ui/use-toast';
 
 const HomeDetails = () => {
   const { id } = useParams();
-  const { homes, addReview, makeDonation, scheduleVisit } = useChildrensHomes();
+  const { homes, addrrrrrrrrew, makeDonation, scheduleVisit } = useChildrensHomes();
   const { user } = useAuth();
 
   const [donationAmount, setDonationAmount] = useState('');
