@@ -1,0 +1,5 @@
+## Pages
+- [- CareConnect](/homedetails): No description available
+- [Get Involved - CareConnect](/getinvolved): Support children in need by making a donation or volunteering your time and skills with CareConnect.
+- [Login - CareConnect](/login): Log in to your CareConnect account to support children
+- [Sign Up - CareConnect](/register): Create your CareConnect account to start supporting children

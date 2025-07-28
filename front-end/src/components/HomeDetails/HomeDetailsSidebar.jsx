@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Heart, DollarSign, Calendar, Clock } from 'lucide-react';
+import MpesaDonationDialog from '@/components/ui/MpesaDonationDialog';
 
 const HomeDetailsSidebar = ({ home, donationAmount, setDonationAmount, handleDonation, selectedDate, setSelectedDate, handleVisitSchedule }) => {
   const progressPercentage = (home.donationsReceived / home.donationGoal) * 100;
+  const [isMpesaDialogOpen, setIsMpesaDialogOpen] = useState(false);
+
+  const handleMpesaDonation = () => {
+    setIsMpesaDialogOpen(true);
+  };
+
+  const handleConfirmDonation = () => {
+    handleDonation();
+    setIsMpesaDialogOpen(false);
+  };
 
   return (
     <div className="space-y-6">
@@ -21,14 +32,14 @@ const HomeDetailsSidebar = ({ home, donationAmount, setDonationAmount, handleDon
             <p className="text-xs text-gray-400">{Math.round(progressPercentage)}% of goal reached</p>
           </div>
           <div className="space-y-3">
-            <Input type="number" placeholder="Enter amount ($)" value={donationAmount} onChange={(e) => setDonationAmount(e.target.value)} className="input-field" />
-            <Button onClick={handleDonation} className="w-full btn-primary"><DollarSign className="h-4 w-4 mr-2" />Donate Now</Button>
+            <Input type="number" placeholder="Enter amount (KES)" value={donationAmount} onChange={(e) => setDonationAmount(e.target.value)} className="input-field" />
+            <Button onClick={handleMpesaDonation} className="w-full btn-primary"><DollarSign className="h-4 w-4 mr-2" />Donate Now</Button>
           </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[25, 50, 100].map((amount) => (
-              <button key={amount} onClick={() => setDonationAmount(amount.toString())} className="glass-effect rounded-lg py-2 text-sm hover:bg-white/20 transition-colors">${amount}</button>
-            ))}
-          </div>
+                      <div className="grid grid-cols-3 gap-2">
+              {[500, 1000, 2000].map((amount) => (
+                <button key={amount} onClick={() => setDonationAmount(amount.toString())} className="glass-effect rounded-lg py-2 text-sm hover:bg-white/20 transition-colors">KES {amount}</button>
+              ))}
+            </div>
         </CardContent>
       </Card>
 
@@ -56,6 +67,15 @@ const HomeDetailsSidebar = ({ home, donationAmount, setDonationAmount, handleDon
           <div className="flex justify-between"><span className="text-gray-300">Occupancy</span><span className="text-white font-medium">{Math.round((home.children / home.capacity) * 100)}%</span></div>
         </CardContent>
       </Card>
+
+      <MpesaDonationDialog
+        isOpen={isMpesaDialogOpen}
+        onClose={() => setIsMpesaDialogOpen(false)}
+        donationAmount={donationAmount}
+        setDonationAmount={setDonationAmount}
+        homeName={home.name}
+        onConfirmDonation={handleConfirmDonation}
+      />
     </div>
   );
 };
