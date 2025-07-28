@@ -6,11 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
-import { useChildrensHomes } from '@/hooks/useChildrensHomes'; 
+import { useChildrensHomes } from '@/hooks/useChildrensHomes';
+import MpesaDonationDialog from '@/components/ui/MpesaDonationDialog'; 
 
 const GetInvolved = () => {
   const [donationAmount, setDonationAmount] = useState('');
   const [selectedHomeId, setSelectedHomeId] = useState('');
+  const [isMpesaDialogOpen, setIsMpesaDialogOpen] = useState(false);
   const [volunteerForm, setVolunteerForm] = useState({
     name: '',
     email: '',
@@ -33,15 +35,20 @@ const GetInvolved = () => {
       return;
     }
 
+    setIsMpesaDialogOpen(true);
+  };
+
+  const handleConfirmDonation = () => {
     const selectedHome = homes.find(home => home.id === selectedHomeId);
 
     toast({
       title: "Thank You!",
-      description: `Your generous donation of $${donationAmount} to ${selectedHome?.name || 'a selected home'} is greatly appreciated.`,
+      description: `Your generous donation of KES ${donationAmount} to ${selectedHome?.name || 'a selected home'} is greatly appreciated.`,
     });
 
     setDonationAmount('');
     setSelectedHomeId('');
+    setIsMpesaDialogOpen(false);
   };
 
   const handleVolunteerFormChange = (e) => {
@@ -116,7 +123,7 @@ const GetInvolved = () => {
                         <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                         <Input
                           type="number"
-                          placeholder="Enter amount"
+                          placeholder="Enter amount (KES)"
                           value={donationAmount}
                           onChange={(e) => setDonationAmount(e.target.value)}
                           className="input-field pl-10"
@@ -125,8 +132,8 @@ const GetInvolved = () => {
 
                       
                       <div className="grid grid-cols-3 gap-2">
-                        {[25, 50, 100].map((amount) => (
-                          <button key={amount} type="button" onClick={() => setDonationAmount(amount.toString())} className="glass-effect rounded-lg py-2 text-sm hover:bg-white/20 transition-colors">${amount}</button>
+                        {[500, 1000, 2000].map((amount) => (
+                          <button key={amount} type="button" onClick={() => setDonationAmount(amount.toString())} className="glass-effect rounded-lg py-2 text-sm hover:bg-white/20 transition-colors">KES {amount}</button>
                         ))}
                       </div>
 
@@ -138,7 +145,7 @@ const GetInvolved = () => {
                           onChange={(e) => setSelectedHomeId(e.target.value)}
                           className="input-field w-full bg-black/30 text-white border border-gray-600 rounded-lg px-3 py-2"
                         >
-                          <option value="">Select a Children’s Home</option>
+                          <option value="">Select a Children's Home</option>
                           {homes.map(home => (
                             <option className="h-6 w-6 mr-3 text-gray-400" key={home.id} value={home.id}>
                               {home.name} — {home.location}
@@ -200,9 +207,17 @@ const GetInvolved = () => {
             </div>
           </div>
         </section>
+
+        <MpesaDonationDialog
+          isOpen={isMpesaDialogOpen}
+          onClose={() => setIsMpesaDialogOpen(false)}
+          donationAmount={donationAmount}
+          setDonationAmount={setDonationAmount}
+          homeName={homes.find(home => home.id === selectedHomeId)?.name}
+          onConfirmDonation={handleConfirmDonation}
+        />
       </div>
     </>
   );
 };
-
 export default GetInvolved;
