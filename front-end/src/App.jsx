@@ -4,6 +4,7 @@ import React from 'react';
     import { Toaster } from '@/components/ui/toaster';
     import Navbar from '@/components/Layout/Navbar';
     import Footer from '@/components/Layout/Footer';
+    import AdminFloatingActions from '@/components/admin/AdminFloatingActions';
     import Home from '@/pages/Home';
     import ChildrensHomes from '@/pages/ChildrensHomes';
     import HomeDetails from '@/pages/HomeDetails';
@@ -11,6 +12,7 @@ import React from 'react';
     import Login from '@/pages/Login';
     import Register from '@/pages/Register';
     import AdminDashboard from '@/pages/admin/AdminDashboard';
+    import AdminHomes from '@/pages/admin/AdminHomes';
 
     const ProtectedRoute = ({ children, adminOnly = false }) => {
       const { user, loading } = useAuth();
@@ -90,10 +92,20 @@ import React from 'react';
                   } 
                 />
 
+                <Route 
+                  path="/admin/homes" 
+                  element={
+                    <ProtectedRoute adminOnly>
+                      <AdminHomes />
+                    </ProtectedRoute>
+                  } 
+                />
+
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </main>
             <Footer />
+            <AdminFloatingActions />
             <Toaster />
           </div>
         </Router>

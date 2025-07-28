@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
     import { Link, useLocation } from 'react-router-dom';
     import { motion } from 'framer-motion';
-    import { Heart, Menu, X, User, LogOut, Settings } from 'lucide-react';
+    import { Heart, Menu, X, User, LogOut, Settings, Home, Plus } from 'lucide-react';
     import { useAuth } from '@/hooks/useAuth.jsx';
     import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
     import { Button } from '@/components/ui/button';
@@ -61,6 +61,18 @@ import React, { useState } from 'react';
               </div>
 
               <div className="flex items-center space-x-4">
+                {/* Admin Quick Actions */}
+                {user?.role === 'admin' && (
+                  <div className="hidden md:flex items-center space-x-2">
+                    <Link to="/admin/homes">
+                      <Button size="sm" className="btn-secondary">
+                        <Home className="h-4 w-4 mr-2" />
+                        Manage Homes
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+
                 {user ? (
                   <div className="relative">
                     <button
@@ -89,6 +101,30 @@ import React, { useState } from 'react';
                           <User className="h-4 w-4 mr-2" />
                           Profile
                         </Link>
+                        
+                        {user?.role === 'admin' && (
+                          <>
+                            <div className="border-t border-white/10 my-2"></div>
+                            <Link
+                              to="/admin"
+                              className="flex items-center px-4 py-2 text-sm hover:bg-white/10 transition-colors text-blue-400"
+                              onClick={() => setIsProfileOpen(false)}
+                            >
+                              <Settings className="h-4 w-4 mr-2" />
+                              Admin Dashboard
+                            </Link>
+                            <Link
+                              to="/admin/homes"
+                              className="flex items-center px-4 py-2 text-sm hover:bg-white/10 transition-colors text-blue-400"
+                              onClick={() => setIsProfileOpen(false)}
+                            >
+                              <Home className="h-4 w-4 mr-2" />
+                              Manage Homes
+                            </Link>
+                          </>
+                        )}
+                        
+                        <div className="border-t border-white/10 my-2"></div>
                         <Link
                           to="/settings"
                           className="flex items-center px-4 py-2 text-sm hover:bg-white/10 transition-colors"
@@ -154,6 +190,21 @@ import React, { useState } from 'react';
                     {item.name}
                   </Link>
                 ))}
+                
+                {/* Admin Quick Actions for Mobile */}
+                {user?.role === 'admin' && (
+                  <div className="pt-4 border-t border-white/10 space-y-2">
+                    <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Admin Actions</p>
+                    <Link
+                      to="/admin/homes"
+                      className="flex items-center py-2 px-4 rounded-lg text-blue-400 hover:bg-white/10 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Home className="h-4 w-4 mr-3" />
+                      Manage Homes
+                    </Link>
+                  </div>
+                )}
                 
                 {!user && (
                   <div className="pt-4 border-t border-white/10 space-y-2">
