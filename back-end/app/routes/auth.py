@@ -54,15 +54,27 @@ def login():
     try:
         data = request.get_json()
         
-        if not data.get('username') or not data.get('password'):
+        # Enhanced input validation
+        username = data.get('username', '').strip()
+        password = data.get('password', '')
+        
+        if not username or not password:
             return jsonify({'error': 'Username and password are required'}), 400
+        
+        # Additional security: Check for minimum password length during login attempt
+        if len(password) == 0:
+            return jsonify({'error': 'Invalid credentials'}), 401
         
         
         user = User.query.filter(
-            (User.username == data['username']) | (User.email == data['username'])
+            (User.username == username) | (User.email == username)
         ).first()
         
-        if not user or not user.check_password(data['password']):
+        if not user or not user.check_password(password):
+            return jsonify({'error': 'Invalid credentials'}), 401
+        
+        # Additional security: Verify user has a valid password hash
+        if not hasattr(user, 'password_hash') or not user.password_hash:
             return jsonify({'error': 'Invalid credentials'}), 401
         
         if not user.is_active:
