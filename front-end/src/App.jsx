@@ -10,6 +10,7 @@ import React from 'react';
     import GetInvolved from '@/pages/GetInvolved';
     import Login from '@/pages/Login';
     import Register from '@/pages/Register';
+    import Profile from '@/pages/Profile';
     import AdminDashboard from '@/pages/admin/AdminDashboard';
 
     const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -78,6 +79,15 @@ import React from 'react';
                     <PublicRoute>
                       <Register />
                     </PublicRoute>
+                  } 
+                />
+
+                <Route 
+                  path="/profile" 
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
                   } 
                 />
 

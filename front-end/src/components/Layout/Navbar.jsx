@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
     import { Link, useLocation } from 'react-router-dom';
     import { motion } from 'framer-motion';
-    import { Heart, Menu, X, User, LogOut, Settings } from 'lucide-react';
+    import { Heart, Menu, X, User, LogOut } from 'lucide-react';
     import { useAuth } from '@/hooks/useAuth.jsx';
     import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
     import { Button } from '@/components/ui/button';
@@ -88,14 +88,6 @@ import React, { useState } from 'react';
                         >
                           <User className="h-4 w-4 mr-2" />
                           Profile
-                        </Link>
-                        <Link
-                          to="/settings"
-                          className="flex items-center px-4 py-2 text-sm hover:bg-white/10 transition-colors"
-                          onClick={() => setIsProfileOpen(false)}
-                        >
-                          <Settings className="h-4 w-4 mr-2" />
-                          Settings
                         </Link>
                         <button
                           onClick={handleLogout}
