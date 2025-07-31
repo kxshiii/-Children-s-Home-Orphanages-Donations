@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Users, Home, Heart, TrendingUp, Calendar, 
-  DollarSign, MapPin, Star, Award, Activity, Settings 
+  DollarSign, MapPin, Star, Award, Activity, Settings, BarChart3
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useChildrensHomes } from '@/hooks/useChildrensHomes';
 import HomesManagement from '../../components/admin/HomesManagement';
-
 
 const AdminDashboard = () => {
   const { homes, loading } = useChildrensHomes();
@@ -131,6 +131,12 @@ const AdminDashboard = () => {
                     <Home className="h-4 w-4 mr-2" />
                     Manage Homes
                   </Button>
+                  <Link to="/admin/analytics">
+                    <Button variant="outline" className="btn-primary">
+                      <BarChart3 className="h-4 w-4 mr-2" />
+                      Analytics
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -170,7 +176,7 @@ const AdminDashboard = () => {
               </div>
             </section>
 
-            
+            {/* Performance Insights */}
             <section className="py-8">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -214,7 +220,6 @@ const AdminDashboard = () => {
                     </Card>
                   </motion.div>
 
-                  
                   <motion.div
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
