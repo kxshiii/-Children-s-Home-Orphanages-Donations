@@ -5,13 +5,14 @@ import React from 'react';
     import Navbar from '@/components/Layout/Navbar';
     import Footer from '@/components/Layout/Footer';
     import Home from '@/pages/Home';
-    import ChildrensHomes from '@/pages/ChildrensHomes';
-    import HomeDetails from '@/pages/HomeDetails';
-    import GetInvolved from '@/pages/GetInvolved';
-    import Login from '@/pages/Login';
-    import Register from '@/pages/Register';
-    import Profile from '@/pages/Profile';
-    import AdminDashboard from '@/pages/admin/AdminDashboard';
+import ChildrensHomes from '@/pages/ChildrensHomes';
+import HomeDetails from '@/pages/HomeDetails';
+import GetInvolved from '@/pages/GetInvolved';
+import About from '@/pages/About';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import Profile from '@/pages/Profile';
+import AdminDashboard from '@/pages/admin/AdminDashboard';
 import Analytics from '@/pages/admin/Analytics';
 
     const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -61,10 +62,11 @@ import Analytics from '@/pages/admin/Analytics';
             <Navbar />
             <main className="flex-1 pt-16">
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/homes" element={<ChildrensHomes />} />
-                <Route path="/homes/:id" element={<HomeDetails />} />
-                <Route path="/get-involved" element={<GetInvolved />} />
+                            <Route path="/" element={<Home />} />
+            <Route path="/homes" element={<ChildrensHomes />} />
+            <Route path="/homes/:id" element={<HomeDetails />} />
+            <Route path="/get-involved" element={<GetInvolved />} />
+            <Route path="/about" element={<About />} />
                 
                 <Route 
                   path="/login" 
