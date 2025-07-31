@@ -22,8 +22,7 @@ const Navbar = () => {
   const adminNavItems = [
     { name: 'Dashboard', path: '/admin' },
     { name: 'Manage Homes', path: '/admin/homes' },
-    { name: 'Analytics', path: '/admin/analytics' },
-    { name: 'Users', path: '/admin/users' }
+    { name: 'Analytics', path: '/admin/analytics' }
   ];
 
   const currentNavItems = user?.role === 'admin' ? adminNavItems : navItems;

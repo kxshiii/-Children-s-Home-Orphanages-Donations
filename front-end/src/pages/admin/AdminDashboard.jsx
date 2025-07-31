@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Users, Home, Heart, TrendingUp, Calendar, 
   DollarSign, MapPin, Star, Award, Activity, Settings 
@@ -131,6 +132,12 @@ const AdminDashboard = () => {
                     <Home className="h-4 w-4 mr-2" />
                     Manage Homes
                   </Button>
+                  <Link to="/admin/analytics">
+                    <Button variant="outline" className="btn-primary">
+                      <BarChart3 className="h-4 w-4 mr-2" />
+                      Analytics
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

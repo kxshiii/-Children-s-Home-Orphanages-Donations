@@ -12,6 +12,7 @@ import React from 'react';
     import Register from '@/pages/Register';
     import Profile from '@/pages/Profile';
     import AdminDashboard from '@/pages/admin/AdminDashboard';
+import Analytics from '@/pages/admin/Analytics';
 
     const ProtectedRoute = ({ children, adminOnly = false }) => {
       const { user, loading } = useAuth();
@@ -96,6 +97,15 @@ import React from 'react';
                   element={
                     <ProtectedRoute adminOnly>
                       <AdminDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+
+                <Route 
+                  path="/admin/analytics" 
+                  element={
+                    <ProtectedRoute adminOnly>
+                      <Analytics />
                     </ProtectedRoute>
                   } 
                 />
